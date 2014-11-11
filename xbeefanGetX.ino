@@ -68,7 +68,7 @@ void setDestination() {
   // set the PAN ID. If you're working in a place where many people
   // are using XBees, you should set your own PAN ID distinct
   // from other projects.
-  Serial.print("ATID1111\r");
+  Serial.print("ATIDFEED\r");
   // put the radio in data mode:
   Serial.print("ATCN\r");
 }
@@ -89,11 +89,12 @@ void blink(int thisPin, int howManyTimes) {
 void handleSerial() {
   char inByte = Serial.read();
   Serial.print(inByte);
-  if (inByte == 'X') {
+  if (inByte == 'X' || inByte == 'x') {
     digitalWrite(PowerSwitchTail, HIGH);
-  } else {
-    digitalWrite(PowerSwitchTail, LOW);
-  }
+  } 
+  //else {
+  //  digitalWrite(PowerSwitchTail, LOW);
+  //}
 }
 
 // save only ASCII numeric characters (ASCII 0 - 9):
